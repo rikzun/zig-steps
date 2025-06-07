@@ -4,7 +4,7 @@
   "description": "",
   "version": "0.0.1",
   "publisher": "rikzun",
-  "repository": "",
+  "repository": "https://github.com/rikzun/zig-steps",
   "engines": {
     "vscode": "^1.10.0"
   },
