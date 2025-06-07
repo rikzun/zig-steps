@@ -1,0 +1,50 @@
+{
+  "name": "zig-steps",
+  "displayName": "zig-steps",
+  "description": "",
+  "version": "0.0.1",
+  "publisher": "rikzun",
+  "repository": "",
+  "engines": {
+    "vscode": "^1.10.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:build.zig",
+    "workspaceContains:build.zig.zon"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "zigStepsView",
+          "name": "Zig Steps",
+          "when": "zigStepsReady"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "zigStepsView.buildStep",
+        "title": "Build zig step"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.10.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
