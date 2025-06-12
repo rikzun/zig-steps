@@ -1,21 +1,21 @@
 {
   "name": "zig-steps",
-  "displayName": "zig-steps",
-  "description": "",
-  "version": "0.0.1",
+  "displayName": "Zig Steps View",
+  "description": "Quick access to zig steps from explorer sidebar",
+  "version": "0.0.2",
   "publisher": "rikzun",
   "repository": "https://github.com/rikzun/zig-steps",
   "engines": {
     "vscode": "^1.10.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "activationEvents": [
     "workspaceContains:build.zig",
     "workspaceContains:build.zig.zon"
   ],
-  "main": "./out/extension.js",
+  "main": "./out/main.js",
   "contributes": {
     "views": {
       "explorer": [
@@ -26,6 +26,36 @@
         }
       ]
     },
+    "configuration": {
+      "type": "object",
+      "title": "Zig Steps View",
+      "properties": {
+        "zigStepsView.zigPath": {
+          "scope": "machine-overridable",
+          "type": "string",
+          "description": "Set path to the `zig` executable.",
+          "default": "zig"
+        },
+        "zigStepsView.excludedSteps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Excluded steps from view."
+        },
+        "zigStepsView.descriptionInTooltip": {
+          "type": "boolean",
+          "default": true,
+          "description": "Shows step description in tooltip section."
+        },
+        "zigStepsView.descriptionInDescription": {
+          "type": "boolean",
+          "default": false,
+          "description": "Shows step description in description section."
+        }
+      }
+    },
     "commands": [
       {
         "command": "zigStepsView.buildStep",
@@ -34,17 +64,12 @@
     ]
   },
   "scripts": {
-    "compile": "tsc -p ./"
+    "compile": "tsc -p ./",
+    "package": "npm run compile && vsce package"
   },
   "devDependencies": {
     "@types/vscode": "^1.10.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2"
+    "@types/node": "^22.15.30",
+    "typescript": "^5.8.3"
   }
 }
